@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-layout-sider {
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.ant-layout-content {
+  background: #f0f2f5;
+}
+
+/* 一级菜单字体加粗和间距优化 */
+.custom-menu .ant-menu-item {
+  font-weight: bold;
+  margin-bottom: 8px;
+  height: 48px;
+  line-height: 48px;
+}
+
+.custom-menu .ant-menu-submenu {
+  margin-bottom: 8px;
+}
+
+.custom-menu .ant-menu-submenu-title {
+  font-weight: bold;
+  height: 48px;
+  line-height: 48px;
+}
+
+/* 二级菜单字体正常 */
+.custom-menu .ant-menu-submenu .ant-menu-item {
+  font-weight: normal;
+  margin-bottom: 0;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* 菜单整体间距 */
+.custom-menu {
+  padding-top: 16px;
+}
+
+/* 一级菜单项选中样式 - 显示蓝色左边框 */
+.custom-menu .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1453E4;
+}
+
+/* 一级菜单项选中背景色 */
+.custom-menu .ant-menu-item-selected {
+  background-color: #e6f7ff !important;
+  color: #1453E4 !important;
+}
+
+/* 一级菜单项悬停效果 */
+.custom-menu .ant-menu-item:hover,
+.custom-menu .ant-menu-submenu-title:hover {
+  background-color: #f0f9ff !important;
+  color: #1453E4 !important;
+}
+
+/* 一级菜单项（有子菜单）选中样式 - 只有当该菜单被选中时才显示蓝色条 */
+.custom-menu .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background-color: #e6f7ff !important;
+  color: #1453E4 !important;
+}
+
+.custom-menu .ant-menu-submenu-selected > .ant-menu-submenu-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1453E4;
+}
+
+/* 展开状态的菜单样式 - 显示蓝色条和背景色 */
+.custom-menu .ant-menu-submenu-open > .ant-menu-submenu-title {
+  background-color: #e6f7ff !important;
+  color: #1453E4 !important;
+}
+
+.custom-menu .ant-menu-submenu-open > .ant-menu-submenu-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1453E4;
+}
+
+/* 强制选中样式 - 当父级菜单被直接选中时 */
+.custom-menu .force-selected > .ant-menu-submenu-title {
+  background-color: #e6f7ff !important;
+  color: #1453E4 !important;
+}
+
+.custom-menu .force-selected > .ant-menu-submenu-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1453E4;
+}
+
+/* 二级菜单不显示左侧蓝色条，只保持淡蓝色背景 */
+.custom-menu .ant-menu-submenu .ant-menu-item-selected::before {
+  display: none;
+}
+
+/* 二级菜单选中样式保持原有效果 */
+.custom-menu .ant-menu-submenu .ant-menu-item-selected {
+  background-color: #e6f7ff !important;
+  color: #1453E4 !important;
+}
+/* 优化复选框呈现：与文字对齐，减小边框和尺寸 */
+.ant-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1; /* 避免受行高影响产生垂直偏移 */
+}
+
+.ant-checkbox {
+  top: 0; /* 取消默认的轻微上移，保证垂直居中 */
+}
+
+.ant-checkbox-inner {
+  width: 14px;
+  height: 14px;
+  border-width: 1px; /* 边框更纤细 */
+}
+/* 选中工作流行高亮，覆盖固定列背景 */
+.workflow-row-selected {
+  background-color: #fff7e6 !important;
+}
+.workflow-row-selected > td,
+.workflow-row-selected .ant-table-cell,
+.workflow-row-selected .ant-table-cell-fix-right,
+.workflow-row-selected .ant-table-cell-fix-left {
+  background-color: #fff7e6 !important;
+}
+/* 在自由对比模式下隐藏工作流配置区卡片体滚动条，但保留滚轮滚动 */
+.pg-config-no-scrollbar .ant-card-body {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE/Edge */
+  -ms-overflow-style: none;
+}
+.pg-config-no-scrollbar .ant-card-body::-webkit-scrollbar {
+  /* Chrome/Safari/Opera */
+  display: none;
+  width: 0;
+  height: 0;
+}
+/* Playground 容器内统一调小 div/span 字号，并加粗按钮文本（自由与非自由模式均生效） */
+.playground-container div,
+.playground-container span {
+  font-size: 13px; /* Ant 默认 14px，这里小一号 */
+}
+.playground-container .ant-btn,
+.playground-container button {
+  font-weight: 600; /* 按钮文字加粗 */
+}
+
+/* 将“现有工作流队列”抽屉的关闭按钮移到右侧 */
+.wf-drawer .ant-drawer-header .ant-drawer-header-title {
+  display: flex;
+  flex-direction: row-reverse;
+}
